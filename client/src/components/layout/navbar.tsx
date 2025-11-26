@@ -31,25 +31,24 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" data-testid="link-home-logo">
-            <a className="text-xl md:text-2xl font-bold hover-elevate active-elevate-2 px-3 py-2 rounded-md">
-              Portfolio
-            </a>
+          <Link href="/" data-testid="link-home-logo" className="text-xl md:text-2xl font-bold hover-elevate active-elevate-2 px-3 py-2 rounded-md">
+            Portfolio
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path} data-testid={`link-nav-${item.label.toLowerCase()}`}>
-                <a
-                  className={`px-4 py-2 rounded-full font-medium transition-colors hover-elevate active-elevate-2 ${
-                    location === item.path
-                      ? "bg-primary text-primary-foreground"
-                      : ""
-                  }`}
-                >
-                  {item.label}
-                </a>
+              <Link
+                key={item.path}
+                href={item.path}
+                data-testid={`link-nav-${item.label.toLowerCase()}`}
+                className={`px-4 py-2 rounded-full font-medium transition-colors hover-elevate active-elevate-2 ${
+                  location === item.path
+                    ? "bg-primary text-primary-foreground"
+                    : ""
+                }`}
+              >
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -70,17 +69,18 @@ export function Navbar() {
         {isOpen && (
           <nav className="md:hidden pb-6 space-y-2" data-testid="mobile-nav">
             {navItems.map((item) => (
-              <Link key={item.path} href={item.path} data-testid={`link-mobile-${item.label.toLowerCase()}`}>
-                <a
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-medium transition-colors hover-elevate active-elevate-2 ${
-                    location === item.path
-                      ? "bg-primary text-primary-foreground"
-                      : ""
-                  }`}
-                >
-                  {item.label}
-                </a>
+              <Link
+                key={item.path}
+                href={item.path}
+                data-testid={`link-mobile-${item.label.toLowerCase()}`}
+                onClick={() => setIsOpen(false)}
+                className={`block px-4 py-3 rounded-lg font-medium transition-colors hover-elevate active-elevate-2 ${
+                  location === item.path
+                    ? "bg-primary text-primary-foreground"
+                    : ""
+                }`}
+              >
+                {item.label}
               </Link>
             ))}
           </nav>
