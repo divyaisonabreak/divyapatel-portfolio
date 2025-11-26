@@ -56,9 +56,9 @@ export default function Home() {
       </section>
 
       {/* Featured Work Preview */}
-      <section className="py-20 md:py-32 bg-background">
+      <section className="py-20 md:py-32 bg-background animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
             <h2 className="text-5xl font-bold mb-4" data-testid="text-featured-title">
               Featured Work
             </h2>
@@ -163,8 +163,8 @@ export default function Home() {
       </section>
 
       {/* Brief About Section */}
-      <section className="py-20 md:py-32 bg-card">
-        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center">
+      <section className="py-20 md:py-32 bg-card animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="max-w-4xl mx-auto px-6 md:px-8 text-center animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
           <Avatar className="w-32 h-32 mx-auto mb-8" data-testid="avatar-profile">
             <AvatarFallback className="text-4xl font-bold bg-primary text-primary-foreground">
               JD

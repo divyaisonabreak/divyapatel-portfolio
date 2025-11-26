@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Navbar() {
   const [location] = useLocation();
@@ -20,6 +21,7 @@ export function Navbar() {
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/projects", label: "Projects" },
+    { path: "/blog", label: "Blog" },
     { path: "/contact", label: "Contact" },
   ];
 
@@ -53,16 +55,19 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <Button
-            size="icon"
-            variant="ghost"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-            data-testid="button-menu-toggle"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+          {/* Theme Toggle & Mobile Menu */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+              data-testid="button-menu-toggle"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

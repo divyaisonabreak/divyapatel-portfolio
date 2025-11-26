@@ -3,88 +3,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
-import project1 from "@assets/generated_images/web_project_mockup_1.png";
-import project2 from "@assets/generated_images/mobile_project_mockup_2.png";
-import project3 from "@assets/generated_images/design_project_mockup_3.png";
+import { useQuery } from "@tanstack/react-query";
+import type { Project } from "@shared/schema";
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filters = ["All", "Web", "Mobile", "Design"];
 
-  const projects = [
-    {
-      id: 1,
-      title: "E-commerce Dashboard",
-      description:
-        "A comprehensive analytics dashboard for online stores featuring real-time data visualization, sales tracking, and inventory management. Built with modern technologies for optimal performance.",
-      image: project1,
-      tags: ["React", "TypeScript", "Charts.js", "Tailwind CSS"],
-      category: "Web",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
+  const { data: projects = [], isLoading } = useQuery<Project[]>({
+    queryKey: ["/api/projects", activeFilter],
+    queryFn: async () => {
+      const query = activeFilter !== "All" ? `?category=${activeFilter}` : "";
+      const response = await fetch(`/api/projects${query}`);
+      if (!response.ok) throw new Error("Failed to fetch projects");
+      return response.json();
     },
-    {
-      id: 2,
-      title: "Mobile Shopping App",
-      description:
-        "Modern e-commerce mobile application with smooth animations, intuitive navigation, and seamless checkout process. Designed for iOS and Android platforms.",
-      image: project2,
-      tags: ["React Native", "Redux", "Firebase", "Stripe"],
-      category: "Mobile",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-    {
-      id: 3,
-      title: "Creative Portfolio Website",
-      description:
-        "Clean and minimal portfolio showcase for a creative agency. Features smooth scrolling, interactive animations, and a bold typographic approach.",
-      image: project3,
-      tags: ["Next.js", "Framer Motion", "Tailwind CSS"],
-      category: "Design",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-    {
-      id: 4,
-      title: "Task Management Platform",
-      description:
-        "Collaborative task management tool with real-time updates, team workflows, and project tracking. Built for teams of all sizes.",
-      image: project1,
-      tags: ["React", "Node.js", "PostgreSQL", "Socket.io"],
-      category: "Web",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-    {
-      id: 5,
-      title: "Fitness Tracking App",
-      description:
-        "Mobile application for tracking workouts, nutrition, and health metrics. Includes personalized recommendations and progress visualization.",
-      image: project2,
-      tags: ["React Native", "GraphQL", "MongoDB"],
-      category: "Mobile",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-    {
-      id: 6,
-      title: "Brand Identity System",
-      description:
-        "Comprehensive design system including logo, color palette, typography, and UI components for a modern tech startup.",
-      image: project3,
-      tags: ["Figma", "Design Tokens", "Documentation"],
-      category: "Design",
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com",
-    },
-  ];
+  });
 
-  const filteredProjects =
-    activeFilter === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeFilter);
+  const filteredProjects = projects;
 
   return (
     <div className="min-h-screen pt-20 md:pt-24 pb-20">
@@ -122,8 +59,13 @@ export default function Projects() {
       {/* Projects Grid */}
       <section className="py-8">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-testid="projects-grid">
-            {filteredProjects.map((project) => (
+          {isLoading ? (
+            <div className="text-center py-20">
+              <p className="text-xl text-muted-foreground">Loading projects...</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-testid="projects-grid">
+              {filteredProjects.map((project) => (
               <Card
                 key={project.id}
                 className="overflow-hidden hover-elevate group"
@@ -188,11 +130,12 @@ export default function Projects() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           {/* Empty State */}
-          {filteredProjects.length === 0 && (
+          {!isLoading && filteredProjects.length === 0 && (
             <div className="text-center py-20" data-testid="empty-state">
               <p className="text-xl text-muted-foreground">
                 No projects found in this category
