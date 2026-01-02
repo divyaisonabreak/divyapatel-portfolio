@@ -1,4 +1,5 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, Router } from "wouter";
+import { useHashLocation } from "@/hooks/use-hash-location";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -14,17 +15,19 @@ import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
 import AntigravityBackground from "@/components/layout/AntigravityBackground";
 
-function Router() {
+function AppRouter() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/projects" component={Projects} />
-      <Route path="/blog/:slug" component={BlogPostPage} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/contact" component={Contact} />
-      <Route component={NotFound} />
-    </Switch>
+    <Router hook={useHashLocation}>
+      <Switch>
+        <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/blog/:slug" component={BlogPostPage} />
+        <Route path="/blog" component={Blog} />
+        <Route path="/contact" component={Contact} />
+        <Route component={NotFound} />
+      </Switch>
+    </Router>
   );
 }
 
@@ -37,7 +40,7 @@ function App() {
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">
-            <Router />
+            <AppRouter />
           </main>
           <Footer />
         </div>
