@@ -12,6 +12,7 @@ import Contact from "@/pages/contact";
 import Blog from "@/pages/blog";
 import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
+import AntigravityBackground from "@/components/layout/AntigravityBackground";
 
 function Router() {
   return (
@@ -31,6 +32,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        {/* 🌀 Add background here */}
+        <AntigravityBackground />
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">

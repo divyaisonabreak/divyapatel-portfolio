@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowUp, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
@@ -13,7 +13,7 @@ export function Footer() {
           {/* Social Links */}
           <div className="flex items-center gap-6" data-testid="social-links">
             <a
-              href="https://github.com"
+              href="https://github.com/divyaisonabreakm"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -24,7 +24,7 @@ export function Footer() {
               </Button>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/divyapatel91"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -35,18 +35,18 @@ export function Footer() {
               </Button>
             </a>
             <a
-              href="https://twitter.com"
+              href="https://www.instagram.com/divyaisonabreak"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter"
-              data-testid="link-twitter"
+              aria-label="Instagram"
+              data-testid="link-instagram"
             >
               <Button size="icon" variant="ghost" className="hover-elevate active-elevate-2">
-                <Twitter className="h-5 w-5" />
+                <Instagram className="h-5 w-5" />
               </Button>
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:divyaspatel913@gmail.com"
               aria-label="Email"
               data-testid="link-email"
             >

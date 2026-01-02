@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Code2, Palette, Rocket, Briefcase, GraduationCap } from "lucide-react";
+import { Code2, Palette, Rocket, Briefcase, GraduationCap, CodeIcon, Handshake } from "lucide-react";
 
 export default function About() {
   const skillCategories = [
@@ -12,8 +12,8 @@ export default function About() {
         "React & Next.js",
         "TypeScript",
         "Tailwind CSS",
-        "Redux & Zustand",
         "Responsive Design",
+        "HTML",
         "Performance Optimization",
       ],
     },
@@ -26,7 +26,6 @@ export default function About() {
         "Design Systems",
         "User Research",
         "Prototyping",
-        "Accessibility",
       ],
     },
     {
@@ -34,11 +33,19 @@ export default function About() {
       title: "Backend & Tools",
       skills: [
         "Node.js & Express",
-        "PostgreSQL & MongoDB",
         "REST & GraphQL",
-        "Docker",
-        "Git & CI/CD",
-        "AWS & Vercel",
+        "Git",
+      ],
+    },
+    {
+      icon: CodeIcon,
+      title: "Data Analysis",
+      skills: [
+        "SQL",
+        "PostgreSQL & MongoDB",
+        "PowerBI",
+        "Excel",
+        "Python",
       ],
     },
   ];
@@ -47,29 +54,65 @@ export default function About() {
     {
       type: "work",
       icon: Briefcase,
-      title: "Senior Frontend Developer",
-      organization: "Tech Startup Inc.",
-      date: "2022 - Present",
+      title: "Suject Matter Expert",
+      organization: "IntouchCX",
+      date: "2025 - Present",
       description:
-        "Leading frontend development for a SaaS platform serving 10,000+ users. Architected scalable component libraries and improved performance by 40%.",
+        "Partner with leadership to coach team members and resolve 30-50 daily customer's inquiries using Salesforce to maintain a 95% satisfaction rate.",
     },
     {
       type: "work",
       icon: Briefcase,
-      title: "Full Stack Developer",
-      organization: "Digital Agency Co.",
-      date: "2020 - 2022",
+      title: "Junior Systems Analyst",
+      organization: "Government of Manitoba",
+      date: "2023 - 2024",
       description:
-        "Built custom web applications for clients across various industries. Specialized in React, Node.js, and cloud deployments.",
+        "Built Power BI dashboards and optimized SQL scripts that automated monthly reporting, reducing manual effort by 40%.",
+    },
+    {
+      type: "work",
+      icon: Briefcase,
+      title: "Teaching Assistant",
+      organization: "The University of Winnipeg",
+      date: "2023 - Present",
+      description:
+        "Facilitated labs and evaluated SQL, Java, and Statistics assignments for over 60 students per term to strengthen their database design skills.",
+    },
+    {
+      type: "work",
+      icon: Briefcase,
+      title: "Junior Student Central Assistant",
+      organization: "University of Winnipeg",
+      date: "2023 - 2024",
+      description:
+        "Managed front-line student support and processed over 200 academic document requests per term while ensuring FIPPA privacy compliance.",
+    },
+    {
+      type: "work",
+      icon: Briefcase,
+      title: "Student Mentor",
+      organization: "University of Winnipeg",
+      date: "2023 - 2024",
+      description:
+        "Mentored over 10 international students on academic transitions and organized campus events for up to 500 attendees.",
     },
     {
       type: "education",
       icon: GraduationCap,
-      title: "B.S. Computer Science",
-      organization: "State University",
-      date: "2016 - 2020",
+      title: "B.Sc. Applied Computer Science",
+      organization: "The University of Winnipeg",
+      date: "2021 - 2024",
       description:
-        "Graduated with honors. Focused on software engineering, algorithms, and human-computer interaction.",
+        "Graduated from the University of Winnipeg on the Dean's Honour List with a minor in Statistics.",
+    },
+    {
+      type: "volunteer",
+      icon: Handshake,
+      title: "Volunteer - Website Manager",
+      organization: "HSDE",
+      date: "2025 - Present",
+      description:
+        "Contributed as an IT volunteer for HSDE and managed website content for local events.",
     },
   ];
 
@@ -82,8 +125,7 @@ export default function About() {
             About Me
           </h1>
           <p className="text-xl text-center text-muted-foreground font-serif max-w-3xl mx-auto leading-relaxed" data-testid="text-page-subtitle">
-            Developer, designer, and problem solver passionate about creating meaningful digital
-            experiences
+            I use data to find answers and web tools to build solutions.
           </p>
         </div>
       </section>
@@ -96,7 +138,7 @@ export default function About() {
             <div className="flex justify-center md:justify-start" data-testid="container-profile-image">
               <Avatar className="w-64 h-64 md:w-80 md:h-80">
                 <AvatarFallback className="text-8xl font-bold bg-primary text-primary-foreground">
-                  JD
+                  DP
                 </AvatarFallback>
               </Avatar>
             </div>
@@ -104,20 +146,18 @@ export default function About() {
             {/* Bio */}
             <div className="space-y-6" data-testid="container-bio">
               <p className="text-lg leading-relaxed font-serif">
-                I'm a full-stack developer and designer based in San Francisco, with a passion for
-                creating elegant solutions to complex problems. My journey in tech started over 5
-                years ago, and since then, I've had the privilege of working on diverse projects
-                ranging from e-commerce platforms to data visualization tools.
+                I am a Data Analyst with a background in Computer Science and a passion for Web Development.
+                My approach to tech is simple: I see a problem, I identify the right tools to fix it, and
+                I learn them until I have a full grasp of the solution. I don't avoid new challenges - I take them as opportunities to expand what I can do.
               </p>
               <p className="text-lg leading-relaxed font-serif">
-                What drives me is the intersection of design and functionality. I believe great
-                software should not only work flawlessly but also provide a delightful user
-                experience. This philosophy guides every project I undertake.
+                While my core focus is on Data Analysis, I enjoy using React and JavaScript to make processes easier and more visual.
+                I've spent a lot of time mastering SQL and relational databases to handle complex data,
+                and I use PowerBI to turn that data into something anyone can understand.
               </p>
               <p className="text-lg leading-relaxed font-serif">
-                When I'm not coding, you'll find me exploring new design trends, contributing to
-                open-source projects, or mentoring aspiring developers. I'm always excited to
-                collaborate on innovative projects that make a positive impact.
+                I’m currently looking for Data Analyst roles where I can also apply my technical development skills.
+                I love collaborating with other tech-minded people on projects that require deep dives into SQL, Python, or interactive dashboards.
               </p>
             </div>
           </div>
@@ -172,9 +212,8 @@ export default function About() {
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className={`relative flex flex-col md:flex-row gap-6 ${
-                    index % 2 === 0 ? "md:flex-row-reverse" : ""
-                  }`}
+                  className={`relative flex flex-col md:flex-row gap-6 ${index % 2 === 0 ? "md:flex-row-reverse" : ""
+                    }`}
                   data-testid={`timeline-item-${index}`}
                 >
                   {/* Content */}

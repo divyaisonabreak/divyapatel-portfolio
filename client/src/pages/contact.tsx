@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Clock, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Clock, Github, Linkedin, Twitter, Instagram } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -202,11 +202,11 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <a
-                    href="mailto:hello@example.com"
+                    href="divyaspatel913@gmail.com"
                     className="text-lg hover:text-primary transition-colors"
                     data-testid="link-email"
                   >
-                    hello@example.com
+                    divyaspatel913@gmail.com
                   </a>
                 </CardContent>
               </Card>
@@ -221,8 +221,8 @@ export default function Contact() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-lg" data-testid="text-location">San Francisco, CA</p>
-                  <p className="text-muted-foreground" data-testid="text-timezone">Pacific Time (UTC-8)</p>
+                  <p className="text-lg" data-testid="text-location">Winnipeg, MB</p>
+                  <p className="text-muted-foreground" data-testid="text-timezone">Central Time (CT)</p>
                 </CardContent>
               </Card>
 
@@ -237,10 +237,13 @@ export default function Contact() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-lg mb-2" data-testid="text-availability">
-                    Currently available for freelance projects
+                    Currently available for freelance projects and full time positions.
                   </p>
                   <p className="text-muted-foreground" data-testid="text-working-hours">
-                    Mon - Fri, 9:00 AM - 6:00 PM PST
+                    Mon - Fri, 9:00 AM - 6:00 PM CST
+                  </p>
+                  <p className="text-muted-foreground" data-testid="text-working-hours">
+                    Sat - Sun, 8:00 AM - 7:00 PM CST
                   </p>
                 </CardContent>
               </Card>
@@ -252,7 +255,7 @@ export default function Contact() {
                 <CardContent>
                   <div className="flex gap-4" data-testid="social-links">
                     <a
-                      href="https://github.com"
+                      href="https://github.com/divyaisonabreak"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="GitHub"
@@ -263,7 +266,7 @@ export default function Contact() {
                       </Button>
                     </a>
                     <a
-                      href="https://linkedin.com"
+                      href="https://www.linkedin.com/in/divyapatel91"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
@@ -277,11 +280,11 @@ export default function Contact() {
                       href="https://twitter.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label="Twitter"
-                      data-testid="link-twitter"
+                      aria-label="Instagram"
+                      data-testid="link-instagram"
                     >
                       <Button size="icon" variant="outline" className="hover-elevate active-elevate-2">
-                        <Twitter className="h-5 w-5" />
+                        <Instagram className="h-5 w-5" />
                       </Button>
                     </a>
                   </div>
