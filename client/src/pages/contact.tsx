@@ -46,7 +46,7 @@ export default function Contact() {
     return null;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const validationError = validateForm();
@@ -62,30 +62,24 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // Construct mailto link for static site communication
+      const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
+      window.location.href = `mailto:divyaspatel913@gmail.com?subject=${subject}&body=${body}`;
 
       toast({
-        title: "Message sent successfully!",
-        description: "I'll get back to you as soon as possible.",
+        title: "Opening Email Client",
+        description: "Please send the pre-filled email to contact me.",
       });
 
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error: any) {
       toast({
         title: "Something went wrong",
-        description: error.message || "Please try again later.",
+        description: "Could not open email client.",
         variant: "destructive",
       });
     } finally {
