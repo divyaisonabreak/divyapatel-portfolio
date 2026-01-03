@@ -15,36 +15,30 @@ import BlogPostPage from "@/pages/blog-post";
 import NotFound from "@/pages/not-found";
 import AntigravityBackground from "@/components/layout/AntigravityBackground";
 
-function AppRouter() {
-  return (
-    <Router hook={useHashLocation}>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/blog/:slug" component={BlogPostPage} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/contact" component={Contact} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
-  );
-}
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        {/* 🌀 Add background here */}
-        <AntigravityBackground />
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <AppRouter />
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
+        <Router hook={useHashLocation}>
+          {/* 🌀 Add background here */}
+          <AntigravityBackground />
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">
+              <Switch>
+                <Route path="/" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/projects" component={Projects} />
+                <Route path="/blog/:slug" component={BlogPostPage} />
+                <Route path="/blog" component={Blog} />
+                <Route path="/contact" component={Contact} />
+                <Route component={NotFound} />
+              </Switch>
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+        </Router>
       </TooltipProvider>
     </QueryClientProvider>
   );
