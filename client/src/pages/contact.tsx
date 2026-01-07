@@ -46,7 +46,7 @@ export default function Contact() {
     return null;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const validationError = validateForm();
@@ -61,25 +61,44 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    try {
-      // Construct mailto link for static site communication
-      const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      );
+    // TODO: Replace with your actual Formspree Form ID
+    // Sign up at https://formspree.io/ to create a form and get your ID
+    const FORMSPREE_FORM_ID = "YOUR_FORM_ID";
 
-      window.location.href = `mailto:divyaspatel913@gmail.com?subject=${subject}&body=${body}`;
-
+    if (FORMSPREE_FORM_ID === "YOUR_FORM_ID") {
       toast({
-        title: "Opening Email Client",
-        description: "Please send the pre-filled email to contact me.",
+        title: "Configuration Missing",
+        description: "Please set your Formspree Form ID in contact.tsx to send messages.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData),
       });
 
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you shortly.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to send message");
+      }
     } catch (error: any) {
       toast({
-        title: "Something went wrong",
-        description: "Could not open email client.",
+        title: "Error sending message",
+        description: "Please try again later or contact me directly via email.",
         variant: "destructive",
       });
     } finally {
