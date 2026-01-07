@@ -290,7 +290,7 @@ export default function Contact() {
                       </Button>
                     </a>
                     <a
-                      href="https://twitter.com"
+                      href="https://www.instagram.com/divyaisonabreak/"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
