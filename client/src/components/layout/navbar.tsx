@@ -44,8 +44,8 @@ export function Navbar() {
                 href={item.path}
                 data-testid={`link-nav-${item.label.toLowerCase()}`}
                 className={`px-4 py-2 rounded-full font-medium transition-colors hover-elevate active-elevate-2 ${location === item.path
-                    ? "bg-primary text-primary-foreground"
-                    : ""
+                  ? "bg-primary text-primary-foreground"
+                  : ""
                   }`}
               >
                 {item.label}
@@ -78,8 +78,8 @@ export function Navbar() {
                 data-testid={`link-mobile-${item.label.toLowerCase()}`}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg font-medium transition-colors hover-elevate active-elevate-2 ${location === item.path
-                    ? "bg-primary text-primary-foreground"
-                    : ""
+                  ? "bg-primary text-primary-foreground"
+                  : ""
                   }`}
               >
                 {item.label}
